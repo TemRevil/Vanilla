@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanilia</title>
+    <link rel="stylesheet" href="CSS/all.css">
+    <link rel="stylesheet" href="CSS/Default.css">
+    <link rel="stylesheet" href="CSS/Revil.css">
+    <link rel="stylesheet" href="CSS/Main.css">
+</head>
+<body class="flex col center">
+    <canvas id="bubble-canvas"></canvas>
+    <div class="selector text" selector-id="model-selector">
+        <div class="selector-trigger" selected-id="model-selecteor">
+            <span class="text"></span>
+            <i class="fa-solid fa-chevron-down text"></i>
+        </div>
+        <div class="selector-dropdown" selected="1.24" data-options="1.24, Agressive 2.31, Calmed 1.3"></div>
+    </div>
+    <div class="main-content flex rwo center gap">
+        <div class="vanilla-side flex row center wrap gap">
+            Will you stand still while the world spins without you?
+        </div>
+        <div class="visualizer-container flex col center">
+            <canvas id="visualizer" width="480" height="360"></canvas>
+            <span id="speech-text" class="speech-display">Say something...</span>
+            <button id="mic-toggle" class="mic-toggle-btn" aria-pressed="false">
+                <span class="icon" id="mic-icon">🎤</span>
+                <span class="label">Listen</span>
+            </button>
+        </div>
+        <div id="user-side" class="user-side flex row center wrap gap text">
+            Will you stand still while the world spins without you?
+        </div>
+    </div>
+    <div class="wh off"></div>
+    <section class="modal-settings flex col gap">
+        <p class="title">Settings</p>
+        <hr>
+        <div class="settings-content flex col" d-control-within="settings">
+            <section d-target="appearance" class="flex col gap">
+                <p class="align">Appearance</p>
+                <div class="settings-box">
+                    <p class="text">White/Dark Mode</p>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="st-wd-mode">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="settings-box">
+                    <p class="text">Waves visualizing</p>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="st-waves">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="settings-box">
+                    <p class="text">Transitions</p>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="st-transitions">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </section>
+            <section d-target="model" class="flex col gap off">
+                <p class="align">Answers</p>
+                <div class="range-slider" range-name="Microphone Sensitive" range-options="Almost Sharp:if your response was incorrect in mic this option will take the word if its close to the word you was mean, Sharp:your response have to be like the same required word no matter your mic didn't take it right" default-range="Sharp"></div>
+                <div class="settings-box">
+                    <p class="text">Waiting</p>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="user-waiting">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="settings-box">
+                    <p class="text">Thinking</p>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="model-thinking">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </section>
+        </div>
+        <div class="settings-view-control w flex row center gap" control-within="settings">
+            <button class="set-btn active" v-target="appearance"><i class="fa-solid fa-brush"></i></button>
+            <button class="set-btn" v-target="model"><i class="fa-regular fa-face-smile"></i></button>
+        </div>
+    </section>
+    <script src="JavaScript/color-thief.umd.js"></script>
+    <script src="JavaScript/all.js"></script>
+    <script type="module" src="JavaScript/Default.js"></script>
+    <script type="module" src="JavaScript/Revil.js"></script>
+    <script type="module" src="JavaScript/Settings.js"></script>
+    <script type="module" src="JavaScript/Main.js"></script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+/* Bubbler Blurly Extended */
+#bubble-canvas {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    filter: blur(100px);
+}
+/* ------------------------------------------ */
+/* Main Content */
+.main-content {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #ffffff4b;
+}
+/* ------------------------------------------ */
+.vanilla-side, .user-side {
+    width: 30%;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 30px;
+}
+.vanilla-side span, .user-side span {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 30px;
+    opacity: 0.2;
+}
+.vanilla-side span.active, .user-side span.active {
+    opacity: 1;
+}
+/* ------------------------------------------ */
+/* Visualaizing The Speech */
+#visualizer {
+    transition: filter 0.2s ease-in-out;
+}
+
+.speech-display {
+    background: #f0f3f8;
+    border: 1px solid #c7cde2;
+    border-radius: 0.8rem;
+    color: #444;
+    font-size: 1.2rem;
+    font-weight: 500;
+    min-height: 3rem;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: 400px;
+}
+.speech-display.listening {
+    background: #e8f4fd;
+    border-color: #00c3ff;
+    color: #0066cc;
+    box-shadow: 0 0 20px rgba(0, 195, 255, 0.2);
+}
+.speech-display.speaking {
+    background: #ecf9fe;
+    border-color: #124;
+    color: #124;
+    box-shadow: 0 0 20px rgba(0, 187, 255, 0.2);
+    animation: pulse-text 0.5s ease-in-out;
+}
+@keyframes pulse-text {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+}
+
+/* === MIC BUTTON === */
+.mic-toggle-btn {
+    background: #fff;
+    border: 1.5px solid #c7cfe2;
+    border-radius: 0.8rem;
+    box-shadow: 0 2px 8px rgba(226, 217, 199, 0.2);
+    color: #222;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+    font-weight: 500;
+    gap: 0.7rem;
+    outline: none;
+    padding: 0.7rem 2.2rem 0.7rem 1.2rem;
+    position: relative;
+    transition: all 0.2s ease;
+}
+.mic-toggle-btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 1.8rem;
+    box-shadow: 0 0 32px 8px rgba(89, 136, 255, 0.27);
+    opacity: 0.7;
+    z-index: -1;
+    transition: box-shadow 0.3s;
+}
+.mic-toggle-btn.active {
+    background: #222;
+    border-color: #222;
+    color: #fff;
+}
+.mic-toggle-btn.active::after {
+    box-shadow: 0 0 48px 12px rgba(0, 115, 255, 0.4);
+}
+.mic-toggle-btn .icon {
+    background: #e7e8f2;
+    border-radius: 0.5rem;
+    color: #222;
+    font-size: 1.1rem;
+    padding: 0.2rem 0.5rem;
+}
+.mic-toggle-btn.active .icon {
+    background: #222;
+    color: #fff;
+}
+/* ------------------------------------------ */
+/* Settings E-Arts */
+.modal-settings {
+    width: 430px;
+    min-height: 95vh;
+    position: absolute;
+    top: 20px;
+    right: -430px;
+    z-index: 5;
+    padding: 10px 20px;
+    background-color: #ebf6ff;
+    border-radius: 25px;
+    box-shadow: 0 7px 30px #1234564b;
+    transition: right 0.15s ease, box-shadow 0.15s ease;
+}
+.modal-settings::before {
+    content: "";
+    width: 8px;
+    height: 150px;
+    position: absolute;
+    top: 310px;
+    left: -20px;
+    background-color: #010823b0;
+    backdrop-filter: blur(30px);
+    border-radius: 999px;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+}
+.settings-view-control {
+    padding: 10px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-color: #fff;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+.settings-content {
+    max-height: 450px;
+}
+.set-btn {
+    width: 70px;
+    height: 50px;
+    border: none;
+    border-radius: 8px;
+    font-size: 24px;
+    background-color: transparent;
+    color: #091327;
+    cursor: pointer;
+    transition: 0.15s 0s ease-in-out;
+}
+.set-btn:hover {
+    background-color: #ebf6ff;
+}
+.set-btn:active {
+    scale: 0.9;
+}
+.set-btn.active {
+    color: var(--our-blue);
+}
+/* ------------------------------------------ */
